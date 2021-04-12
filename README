@@ -1,0 +1,2 @@
+This project serves as the backend for the Spoonful website. Its purpose is to dynamically store
+user, recipe, and review information. It utilizes Mongo (mongoose) and Express to connect to our frontend React application.

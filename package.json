@@ -1,0 +1,15 @@
+{
+  "name": "wbdv-finalproject-server-node",
+  "version": "1.0.0",
+  "description": "Internal backend for Spoonful website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sindhu, Santosh, Juan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.3"
+  }
+}
