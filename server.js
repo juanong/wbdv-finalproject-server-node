@@ -27,4 +27,5 @@ userController(app)
 const reviewsController = require('./controllers/reviews-controller')
 reviewsController(app)
 
-app.listen(3000)
+// IMPORTANT: our mongo server is running on port 4000
+app.listen(4000)

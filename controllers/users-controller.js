@@ -15,6 +15,12 @@ module.exports = (app) => {
             })
     }
 
+    const findUserByUsername = (req, res) => {
+        const username = req.params['username']
+        usersService.findUserByUsername(username)
+            .then(user => res.json(user[0]))
+    }
+
     const createUser = (req, res) => {
         const post = req.body;
         usersService.createUser(post)
@@ -30,5 +36,6 @@ module.exports = (app) => {
 
     app.get('/api/internal/users', findAllUsers)
     app.get('/api/internal/users/:userId', findUserById)
+    app.get('/api/internal/users/username/:username', findUserByUsername)
     app.delete('/api/internal/users/:userId', deleteUserById)
 }
