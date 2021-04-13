@@ -6,7 +6,6 @@ const usersSchema = mongoose.Schema({
     username: String,
     firstName: String,
     lastName: String,
-    dob: Date,
     password: String,
     userType: {type: String, enum: ["CHEF", "HOME_COOK"]},
     profilePic_url: String,

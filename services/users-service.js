@@ -6,7 +6,14 @@ const findAllUsers = () => {
 const findUserById = (userId) => {
     return usersModel.findById(userId)
 }
-const createUser = () => {}
+const createUser = (post) => {
+    try {
+        const newUser = new usersModel(post)
+        return usersModel.save(newUser)
+    } catch (error) {
+        return "404"
+    }
+}
 const deleteUserById = (userId) => {
     return usersModel.remove({_id: userId})
 }

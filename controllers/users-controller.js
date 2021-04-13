@@ -16,6 +16,9 @@ module.exports = (app) => {
     }
 
     const createUser = (req, res) => {
+        const post = req.body;
+        usersService.createUser(post)
+            .then(response => res.send(response))
     }
 
     const deleteUserById = (req, res) => {
