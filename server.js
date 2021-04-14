@@ -1,5 +1,8 @@
 const express = require('express')
 const app = express()
+var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 // Configure CORS - everything has access to this server
 app.use(function (req, res, next) {

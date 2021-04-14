@@ -11,12 +11,13 @@ const findUserByUsername = (username) => {
     return usersModel.find({username: username})
 }
 
-const createUser = (post) => {
+const createUser = (newUser) => {
     try {
-        const newUser = new usersModel(post)
-        return usersModel.save(newUser)
+        const response = usersModel.create(newUser)
+        console.log(response)
+        return response
     } catch (error) {
-        return "404"
+        return -1
     }
 }
 const deleteUserById = (userId) => {
