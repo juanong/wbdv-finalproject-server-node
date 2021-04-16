@@ -8,14 +8,16 @@ const findUserById = (userId) => {
 }
 
 const findUserByUsername = (username) => {
-    return usersModel.find({username: username})
+    return usersModel.findOne({username: username})
+}
+
+const findUserByCredentials = (credentials) => {
+    return usersModel.findOne({username: credentials.username, password: credentials.password})
 }
 
 const createUser = (newUser) => {
     try {
-        const response = usersModel.create(newUser)
-        console.log(response)
-        return response
+        return usersModel.create(newUser)
     } catch (error) {
         return -1
     }
@@ -31,5 +33,6 @@ module.exports = {
     findUserByUsername,
     createUser,
     deleteUserById,
-    updateUserById
+    updateUserById,
+    findUserByCredentials
 }
