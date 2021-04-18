@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const recipeSchema = require("../recipes/recipes-schema")
 
 // Every user must follow this structure
 const usersSchema = mongoose.Schema({
@@ -9,7 +10,8 @@ const usersSchema = mongoose.Schema({
     password: String,
     userType: {type: String, enum: ["CHEF", "HOME_COOK"]},
     profilePic_url: String,
-    preferences: [String]
+    preferences: [String],
+    recipes: [recipeSchema]
 }, {collection: "users"})
 
 module.exports = usersSchema
