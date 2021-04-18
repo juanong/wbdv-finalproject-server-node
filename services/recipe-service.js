@@ -21,7 +21,7 @@ const updateRecipe = (recipeId) => {
 }
 
 const findRecipeById = (recipeId) => {
-    return recipeModel.find({_id: recipeId})
+    return recipeModel.findOne({_id: recipeId})
 }
 
 const findAllRecipesByTitle = (titleToFilter) => {

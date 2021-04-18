@@ -9,8 +9,12 @@ const recipesSchema = mongoose.Schema({
     prep_time: Number,
     cook_time: Number,
     description: String,
-    ingredients: String,
+    extendedIngredients: [],
     instructions: String
 }, {collection: "recipes"})
+
+const ingredientSchema = {
+    originalString : String
+}
 
 module.exports = recipesSchema
