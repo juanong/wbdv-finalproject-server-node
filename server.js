@@ -42,5 +42,8 @@ userController(app)
 const reviewsController = require('./controllers/reviews-controller')
 reviewsController(app)
 
+const recipeController = require('./controllers/recipe-controller')
+recipeController(app)
+
 // IMPORTANT: our mongo server is running on port 4000
 app.listen(4000)
