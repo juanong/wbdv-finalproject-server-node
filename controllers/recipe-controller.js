@@ -23,14 +23,19 @@ module.exports = (app) => {
 
     const findRecipeById = (req, res) => {
         const recipeId = req.params.recipeId
-        recipesService.findRecipeById(recipeId)
-            .then(recipe => {
-                if (recipe) {
-                    res.send(recipe)
-                } else {
-                    res.send("0")
-                }
-            })
+        if (recipeId.match(/^[0-9a-fA-F]{24}$/)) {
+            recipesService.findRecipeById(recipeId)
+                .then(recipe => {
+                    if (recipe) {
+                        res.send(recipe)
+                    } else {
+                        res.send("0")
+                    }
+                })
+        } else {
+            res.send("0")
+        }
+
     }
 
     app.post('/api/internal/users/:username/create-recipe', createRecipe)
