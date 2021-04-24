@@ -69,7 +69,14 @@ module.exports = (app) => {
         usersService.deleteUserById(userId)
             .then(res.send("OK"))
     }
-    const updateUserById = (req, res) => {}
+    const updateUser = (req, res) => {
+        const updatedUser = req.body
+        usersService.updateUser(updatedUser)
+            .then(response => {
+                req.session['profile'] = updatedUser
+                return res.send(response)
+            })
+    }
 
     const profile = (req, res) => {
         const currUser = req.session["profile"]
@@ -84,4 +91,5 @@ module.exports = (app) => {
     app.post('/api/internal/users', register)
     app.post('/api/internal/users/profile', profile)
     app.post('/api/internal/users/logout', logout)
+    app.put('/api/internal/users', updateUser)
 }

@@ -19,13 +19,19 @@ const createUser = (newUser) => {
     try {
         return usersModel.create(newUser)
     } catch (error) {
-        return -1
+        return "-1"
     }
 }
 const deleteUserById = (userId) => {
     return usersModel.remove({_id: userId})
 }
-const updateUserById = () => {}
+const updateUser = (updatedUser) => {
+    try {
+        return usersModel.updateOne({_id: updatedUser._id}, {$set: updatedUser})
+    } catch {
+        return "-1"
+    }
+}
 
 module.exports = {
     findAllUsers,
@@ -33,6 +39,6 @@ module.exports = {
     findUserByUsername,
     createUser,
     deleteUserById,
-    updateUserById,
+    updateUser,
     findUserByCredentials
 }
