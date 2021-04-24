@@ -4,7 +4,7 @@ const mongoose = require("mongoose")
 const recipesSchema = mongoose.Schema({
     author_id: String, // username
     title: String,
-    picture_url: String,
+    image: String,
     servings: Number,
     preparationMinutes: Number,
     cookingMinutes: Number,
@@ -13,9 +13,5 @@ const recipesSchema = mongoose.Schema({
     instructions: String,
     api_source: {type: String, default: "internal"}
 }, {collection: "recipes"})
-
-const ingredientSchema = {
-    originalString : String
-}
 
 module.exports = recipesSchema

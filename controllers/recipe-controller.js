@@ -38,6 +38,12 @@ module.exports = (app) => {
 
     }
 
+    const findRecipeImageForRecipe = (req, res) => {
+
+    }
+
+
+
     app.post('/api/internal/users/:username/create-recipe', createRecipe)
     app.get('/api/internal/search', findAllRecipesByTitle)
     app.get('/api/internal/recipes/:recipeId', findRecipeById)
