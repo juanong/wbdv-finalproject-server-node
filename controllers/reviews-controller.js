@@ -24,7 +24,11 @@ module.exports = (app) => {
             })
     }
 
-    const createReviewForRecipe = (req, res) => {}
+    const createReviewForRecipe = (req, res) => {
+        const review = req.body
+        reviewsService.createReviewForRecipe(review)
+            .then(response => res.send(response))
+    }
 
     const deleteReview = (req, res) => {}
 
@@ -33,4 +37,5 @@ module.exports = (app) => {
     app.get('/api/internal/reviews', findAllReviews)
     app.get('/api/internal/reviews/:reviewId', findReviewById)
     app.get('/api/internal/recipes/:recipeId/reviews', findReviewsForRecipe)
+    app.post('/api/internal/reviews', createReviewForRecipe)
 }

@@ -6,11 +6,12 @@ const recipesSchema = mongoose.Schema({
     title: String,
     picture_url: String,
     servings: Number,
-    prep_time: Number,
-    cook_time: Number,
-    description: String,
+    preparationMinutes: Number,
+    cookingMinutes: Number,
+    summary: String,
     extendedIngredients: [],
-    instructions: String
+    instructions: String,
+    api_source: {type: String, default: "internal"}
 }, {collection: "recipes"})
 
 const ingredientSchema = {

@@ -1,8 +1,9 @@
 const mongoose = require("mongoose")
 
+
 const reviewsSchema = mongoose.Schema({
-    recipe_id: mongoose.ObjectId,
-    post_date: Date,
+    recipe_id: String,
+    author: {type: String, ref: "Users"},
     star_rating: Number,
     review_body: String
 }, {collection: "reviews"})

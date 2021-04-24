@@ -10,9 +10,17 @@ const findReviewById = (reviewId) => {
 
 const findReviewsForRecipe = (recipeId) => {
     return reviewsModel.find({recipe_id: recipeId})
+        .populate('author', 'username')
 }
 
-const createReviewForRecipe = (newReview, recipeId) => {}
+const createReviewForRecipe = (newReview) => {
+    try {
+        return reviewsModel.create(newReview)
+    }
+    catch {
+        return "-1"
+    }
+}
 
 const deleteReview = (reviewId) => {}
 
