@@ -10,7 +10,11 @@ const findReviewById = (reviewId) => {
 
 const findReviewsForRecipe = (recipeId) => {
     return reviewsModel.find({recipe_id: recipeId})
-        .populate('author', 'username')
+        //.populate('author', 'username')
+}
+
+const findReviewsByAuthor = (username) => {
+    return reviewsModel.find({author: username})
 }
 
 const createReviewForRecipe = (newReview) => {
@@ -30,6 +34,7 @@ module.exports = {
     findAllReviews,
     findReviewById,
     findReviewsForRecipe,
+    findReviewsByAuthor,
     createReviewForRecipe,
     deleteReview,
     updateReview

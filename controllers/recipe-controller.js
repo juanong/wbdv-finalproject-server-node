@@ -21,6 +21,12 @@ module.exports = (app) => {
         }
     }
 
+    const findRecipesByAuthor = (req, res) => {
+        const author = req.params['username']
+        recipesService.findRecipesByAuthor(author)
+            .then(recipes => res.send(recipes))
+    }
+
     const findRecipeById = (req, res) => {
         const recipeId = req.params.recipeId
         if (recipeId.match(/^[0-9a-fA-F]{24}$/)) {
@@ -35,7 +41,6 @@ module.exports = (app) => {
         } else {
             res.send("0")
         }
-
     }
 
     const findRecipeImageForRecipe = (req, res) => {
@@ -47,4 +52,5 @@ module.exports = (app) => {
     app.post('/api/internal/users/:username/create-recipe', createRecipe)
     app.get('/api/internal/search', findAllRecipesByTitle)
     app.get('/api/internal/recipes/:recipeId', findRecipeById)
+    app.get('/api/internal/users/:username/recipes', findRecipesByAuthor)
 }
