@@ -89,6 +89,7 @@ recipeController(app)
 const imageController = require('./controllers/image-controller')
 imageController(app, upload)
 
+// API are added here, because gfs varaible cannot be passed down
 app.get('/api/internal/file/:filename', (req, res) => {
     const filename = req.params.filename
 

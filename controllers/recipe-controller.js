@@ -43,14 +43,23 @@ module.exports = (app) => {
         }
     }
 
-    const findRecipeImageForRecipe = (req, res) => {
-
+    const findLatestRecipes = (req, res) => {
+        const limit = req.query.limit !== undefined ? req.query.limit : 4;
+        recipesService.findLatestRecipes(limit)
+            .then(recipes => res.send(recipes))
     }
 
-
+    const findLatestRecipesForAuthor = (req, res) => {
+        const limit = req.query.limit !== undefined ? req.query.limit : 4;
+        const author_id = req.params.username
+        recipesService.findLatestRecipesForAuthor(limit, author_id)
+            .then(recipes => res.send(recipes))
+    }
 
     app.post('/api/internal/users/:username/create-recipe', createRecipe)
     app.get('/api/internal/search', findAllRecipesByTitle)
+    app.get('/api/internal/recipes/latest', findLatestRecipes)
     app.get('/api/internal/recipes/:recipeId', findRecipeById)
     app.get('/api/internal/users/:username/recipes', findRecipesByAuthor)
+    app.get('/api/internal/users/:username/recipes/latest', findLatestRecipesForAuthor)
 }

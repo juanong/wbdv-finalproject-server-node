@@ -28,8 +28,18 @@ const findAllRecipesByTitle = (titleToFilter) => {
     return recipeModel.find({title: {$regex: new RegExp(titleToFilter, 'i')}})
 }
 
+
 const findRecipesByAuthor = (username) => {
     return recipeModel.find({author_id: username})
+}
+
+const findLatestRecipes = (limit) => {
+    return recipeModel.find().sort({_id: -1}).limit(Number(limit));
+}
+
+
+const findLatestRecipesForAuthor = (limit, author_id) => {
+    return recipeModel.find({author_id : author_id}).sort({_id : -1}).limit(Number(limit))
 }
 
 module.exports = {
@@ -37,5 +47,7 @@ module.exports = {
     updateRecipe,
     findRecipeById,
     findAllRecipesByTitle,
-    findRecipesByAuthor
+    findRecipesByAuthor,
+    findLatestRecipes,
+    findLatestRecipesForAuthor
 }
