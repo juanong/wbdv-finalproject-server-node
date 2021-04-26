@@ -11,7 +11,10 @@ const usersSchema = mongoose.Schema({
     userType: {type: String, enum: ["CHEF", "HOME_COOK"]},
     profilePic_url: String,
     preferences: [String],
-    recipes: [recipeSchema]
+    recipes: [recipeSchema],
+    followers : [String],
+    following : [String]
+
 }, {collection: "users"})
 
 module.exports = usersSchema

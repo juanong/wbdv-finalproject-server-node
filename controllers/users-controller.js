@@ -83,7 +83,21 @@ module.exports = (app) => {
         res.send(currUser)
     }
 
+    const followUser = (req, res) => {
+        const userFollowing = req.params.userFollowing
+        const userGettingFollowed = req.params.userGettingFollowed
+        usersService.followUser(userFollowing, userGettingFollowed)
+            .then(user => res.send(user))
+    }
+
+    const findFilteredUsers = (req, res) => {
+        const usersToFilter = JSON.parse(req.query.users)
+        usersService.findFilteredUser(usersToFilter)
+            .then(users => res.send(users))
+    }
+
     app.get('/api/internal/users', findAllUsers)
+    app.get('/api/internal/users/filter', findFilteredUsers)
     app.get('/api/internal/users/:userId', findUserById)
     app.get('/api/internal/users/username/:username', findUserByUsername)
     app.post('/api/internal/users/login', login)
@@ -92,4 +106,5 @@ module.exports = (app) => {
     app.post('/api/internal/users/profile', profile)
     app.post('/api/internal/users/logout', logout)
     app.put('/api/internal/users', updateUser)
+    app.put('/api/internal/users/:userFollowing/follow/:userGettingFollowed', followUser)
 }

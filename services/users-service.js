@@ -33,6 +33,43 @@ const updateUser = (updatedUser) => {
     }
 }
 
+const findAllFollowersForUser = (username) => {
+    return usersModel.find({username: username}, {followers: 1})
+}
+
+const findAllFollowingForUser = (username) => {
+    return usersModel.find({username: username}, {following: 1})
+}
+
+const findFilteredUser = (users) => {
+    return usersModel.find({
+        username: {
+            $in: users
+        }
+    })
+}
+
+const followUser = (username, userGettingFollowed) => {
+
+    return usersModel.update(
+        {username: userGettingFollowed},
+        {
+            $push: {
+                followers: username
+            }
+        }
+    )
+        .then(status => usersModel.update(
+            {username: username},
+            {
+                $push: {
+                    following: userGettingFollowed
+                }
+            }
+        ))
+}
+
+
 module.exports = {
     findAllUsers,
     findUserById,
@@ -40,5 +77,9 @@ module.exports = {
     createUser,
     deleteUserById,
     updateUser,
-    findUserByCredentials
+    findUserByCredentials,
+    findAllFollowersForUser,
+    findAllFollowingForUser,
+    followUser,
+    findFilteredUser
 }
