@@ -27,7 +27,7 @@ app.use(session({
 // Configure CORS - everything has access to this server
 app.use(function (req, res, next) {
     // IMPORTANT: change the second param to be specific sources we allow to access the website (can't do * with username/password info)
-    res.header('Access-Control-Allow-Origin', process.env.FRONT_END_URI);
+    res.header('Access-Control-Allow-Origin', "https://spoonful-client-react.herokuapp.com/");
     res.header('Access-Control-Allow-Headers',
         'Content-Type, X-Requested-With, Origin');
     res.header('Access-Control-Allow-Methods',
