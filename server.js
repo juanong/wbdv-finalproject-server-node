@@ -36,8 +36,8 @@ app.use(function (req, res, next) {
     next();
 });
 
-
-const mongoURI = 'mongodb://localhost:27017/spoonful-db'
+require('dotenv').config();
+const mongoURI = process.env.MONGODB_URI;
 // Connect the server to our mongodb running on port 27017
 const mongoose = require('mongoose');
 mongoose.connect(
@@ -116,4 +116,4 @@ app.get('/api/internal/images/:filename', (req, res) => {
 });
 
 // IMPORTANT: our mongo server is running on port 4000
-app.listen(4000)
+app.listen(process.env.PORT || 4000)
